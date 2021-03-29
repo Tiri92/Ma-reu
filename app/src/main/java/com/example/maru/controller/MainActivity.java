@@ -1,16 +1,16 @@
 package com.example.maru.controller;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-
 import com.example.maru.R;
 import com.example.maru.model.Meeting;
-import com.example.maru.service.MeetingService;
-import com.example.maru.service.LocalMeetingService;
 
 import java.util.List;
+
+import static com.example.maru.di.DI.meetingService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,11 +20,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         recyclerView = findViewById(R.id.RecyclerView);
 
-        MeetingService meetingService = new LocalMeetingService();
-
         List<Meeting> listOfMeeting = meetingService.getMeetingList();
+        recyclerView.setAdapter(new RecyclerViewAdapter(listOfMeeting));
     }
 }
