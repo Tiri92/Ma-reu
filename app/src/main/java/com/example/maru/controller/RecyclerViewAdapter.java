@@ -1,6 +1,5 @@
 package com.example.maru.controller;
 
-import android.graphics.ColorFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.maru.R;
+import com.example.maru.di.DI;
 import com.example.maru.model.Meeting;
 
 import java.util.List;
@@ -40,19 +40,36 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Meeting meeting = listOfMeeting.get(position);
-        holder.mItemListName.setText(meeting.getSubjectOfMeeting());
-        holder.mItemOfListOfMeeting.setColorFilter( /*getRandomColorFilter()*/ R.color.teal_200);
+
+        holder.mEmail_List.setText(getEmailParticipantList(meeting));
+        holder.mItemListName.setText(getTitleOfMeeting(meeting));
+        holder.mItemOfListOfMeeting.setColorFilter(R.color.purple_700);
         holder.mItemDeleteButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(holder.itemView.getContext(), "Ça marche!", Toast.LENGTH_SHORT).show(); }
+                Toast.makeText(holder.itemView.getContext(), "Réunion supprimé", Toast.LENGTH_SHORT).show();
+                DI.getMeetingService().deleteMeeting(meeting);
+                notifyItemRemoved(position);
+            }
         });
+
     }
 
-    private ColorFilter getRandomColorFilter() {
-        ColorFilter colorFilter = new ColorFilter();
+    private String getTitleOfMeeting(Meeting meeting) {
+        return meeting.getPlaceOfMeeting() + " - " + meeting.getTimeOfMeeting() + " - " + meeting.getSubjectOfMeeting();
+    }
 
-        return colorFilter;
+    /**
+     * "StringBuilder" is used to modify a "String", ".toString()" is used to cast a "StringBuilder" into
+     * a "String" at the last to make a "return" for example, "append" is used to add something to the "String",
+     * it's better than "add" and it optimize the code
+     */
+    private String getEmailParticipantList(Meeting meeting) {
+        StringBuilder emailsOfParticipants = new StringBuilder();
+        for(String mail:meeting.getListOfParticipants()){
+            emailsOfParticipants.append(mail).append(" ");
+        }
+        return emailsOfParticipants.toString();
     }
 
     @Override
@@ -66,6 +83,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public ImageView mItemOfListOfMeeting;
         @BindView(R.id.item_list_name)
         public TextView mItemListName;
+        @BindView(R.id.email_list)
+        public TextView mEmail_List;
         @BindView(R.id.item_list_delete_button)
         public ImageButton mItemDeleteButton;
 

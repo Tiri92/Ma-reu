@@ -5,7 +5,7 @@ import java.util.List;
 public class Meeting {
 
 
-    private int timeOfMeeting;
+    private String timeOfMeeting;
 
     private String placeOfMeeting;
 
@@ -22,7 +22,7 @@ public class Meeting {
      * @param listOfParticipants
      */
 
-    public Meeting(int timeOfMeeting, String placeOfMeeting, String subjectOfMeeting, List<String> listOfParticipants) {
+    public Meeting(String timeOfMeeting, String placeOfMeeting, String subjectOfMeeting, List<String> listOfParticipants) {
 
         this.timeOfMeeting = timeOfMeeting;
         this.placeOfMeeting = placeOfMeeting;
@@ -30,11 +30,11 @@ public class Meeting {
         this.listOfParticipants = listOfParticipants;
     }
 
-    public int getTimeOfMeeting() {
+    public String getTimeOfMeeting() {
         return timeOfMeeting;
     }
 
-    public void setTimeOfMeeting(int timeOfMeeting) {
+    public void setTimeOfMeeting(String timeOfMeeting) {
         this.timeOfMeeting = timeOfMeeting;
     }
 

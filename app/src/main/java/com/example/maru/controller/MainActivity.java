@@ -20,9 +20,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = findViewById(R.id.RecyclerView);
 
+        recyclerView = findViewById(R.id.RecyclerView);
         List<Meeting> listOfMeeting = meetingService.getMeetingList();
         recyclerView.setAdapter(new RecyclerViewAdapter(listOfMeeting));
+
     }
 }
