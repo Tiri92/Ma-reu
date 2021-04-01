@@ -1,8 +1,12 @@
 package com.example.maru.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.maru.R;
@@ -10,20 +14,36 @@ import com.example.maru.model.Meeting;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static com.example.maru.di.DI.meetingService;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
+    @BindView(R.id.add_meeting_button)
+    ImageButton mAddMeetingButton;
+
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         recyclerView = findViewById(R.id.RecyclerView);
         List<Meeting> listOfMeeting = meetingService.getMeetingList();
         recyclerView.setAdapter(new RecyclerViewAdapter(listOfMeeting));
+
+    mAddMeetingButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), AddMeetingActivity.class);
+            ActivityCompat.startActivity(v.getContext(), intent, null);
+
+        }
+    });
 
     }
 }

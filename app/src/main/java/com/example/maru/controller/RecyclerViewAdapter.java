@@ -33,7 +33,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.meetinglistitem, parent, false);
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.meeting_list_item, parent, false);
             return new ViewHolder(itemView);
     }
 
@@ -41,7 +41,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Meeting meeting = listOfMeeting.get(position);
 
-        holder.mEmail_List.setText(getEmailParticipantList(meeting));
+        holder.mEmailList.setText(getEmailParticipantList(meeting));
         holder.mItemListName.setText(getTitleOfMeeting(meeting));
         holder.mItemOfListOfMeeting.setColorFilter(R.color.purple_700);
         holder.mItemDeleteButton.setOnClickListener(new OnClickListener() {
@@ -67,7 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private String getEmailParticipantList(Meeting meeting) {
         StringBuilder emailsOfParticipants = new StringBuilder();
         for(String mail:meeting.getListOfParticipants()){
-            emailsOfParticipants.append(mail).append(" ");
+            emailsOfParticipants.append(mail).append(","+" ");
         }
         return emailsOfParticipants.toString();
     }
@@ -84,10 +84,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @BindView(R.id.item_list_name)
         public TextView mItemListName;
         @BindView(R.id.email_list)
-        public TextView mEmail_List;
+        public TextView mEmailList;
         @BindView(R.id.item_list_delete_button)
         public ImageButton mItemDeleteButton;
-
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

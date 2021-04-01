@@ -19,27 +19,29 @@
 
     <TextView
         android:id="@+id/item_list_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="16dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:singleLine="true"
-
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
         android:ellipsize="end"
-
+        android:singleLine="true"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/item_list_meeting"
+        app:layout_constraintEnd_toStartOf="@id/item_list_delete_button"
         app:layout_constraintStart_toEndOf="@id/item_list_meeting"
         app:layout_constraintTop_toTopOf="@id/item_list_meeting"
         tools:text="15h30 - Réunion A" />
 
     <TextView
         android:id="@+id/email_list"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
+        android:ellipsize="end"
+        android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="@id/item_list_meeting"
         app:layout_constraintEnd_toStartOf="@+id/item_list_delete_button"
         app:layout_constraintHorizontal_bias="0.0"
@@ -51,12 +53,12 @@
         android:id="@+id/item_list_delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@null"
+        android:src="@drawable/ic_baseline_delete_24"
         app:layout_constraintBottom_toBottomOf="@id/item_list_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/item_list_name"
-        android:src="@drawable/ic_baseline_delete_24" />
-
+        app:layout_constraintTop_toTopOf="@id/item_list_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
