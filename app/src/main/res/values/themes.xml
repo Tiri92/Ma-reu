@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.Maréu" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/BleuCiel</item>
+        <item name="colorPrimaryVariant">@color/BleuMarine</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -15,7 +15,7 @@
     </style>
     <!-- Configuration of the color of the AddMeetingButton -->
     <style name="redFabButton" parent="Widget.MaterialComponents.FloatingActionButton">
-        <item name="backgroundTint">@android:color/holo_red_light</item>
+        <item name="backgroundTint">@android:color/holo_red_dark</item>
         <item name="tint">@color/white</item>
     </style>
 
