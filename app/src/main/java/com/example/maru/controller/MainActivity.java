@@ -25,6 +25,13 @@ public class MainActivity extends AppCompatActivity {
     ImageButton mAddMeetingButton;
 
     private RecyclerView recyclerView;
+    RecyclerViewAdapter mAdapter;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mAdapter.notifyDataSetChanged();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.RecyclerView);
         List<Meeting> listOfMeeting = meetingService.getMeetingList();
-        recyclerView.setAdapter(new RecyclerViewAdapter(listOfMeeting));
+        mAdapter = new RecyclerViewAdapter(listOfMeeting);
+        recyclerView.setAdapter(mAdapter);
 
-    mAddMeetingButton.setOnClickListener(new View.OnClickListener() {
+
+        mAddMeetingButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), AddMeetingActivity.class);
