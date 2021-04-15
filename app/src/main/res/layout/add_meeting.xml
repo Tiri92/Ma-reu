@@ -5,15 +5,122 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/DateOfMeeting"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/date_of_meeting"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:helperText="Press twice"
+        app:layout_constraintBottom_toTopOf="@+id/TimeOfMeeting"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.83">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/DateOfMeeting2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TimeOfMeeting"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/time_of_meeting"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:helperText="Press twice"
+        app:layout_constraintBottom_toTopOf="@+id/PlaceOfMeeting"
+        app:layout_constraintTop_toBottomOf="@id/DateOfMeeting"
+        app:layout_constraintVertical_bias="0.83">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TimeOfMeeting2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/PlaceOfMeeting"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/place_of_meeting"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@id/SubjectOfMeeting"
+        app:layout_constraintTop_toBottomOf="@id/TimeOfMeeting">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/PlaceOfMeeting2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/SubjectOfMeeting"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/subject_of_meeting"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@id/ListOfParticipants"
+        app:layout_constraintTop_toBottomOf="@id/PlaceOfMeeting">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/SubjectOfMeeting2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ListOfParticipants"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/list_of_participants"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:helperTextEnabled="true"
+        app:helperText="Separate participants with ,"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.55">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ListOfParticipants2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <Button
+        android:id="@+id/SaveMeeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="332dp"
-        android:text="BONJOUR"
-        android:textSize="48dp"
+        android:text="SAVE MEETING"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="BONJOUR" />
+        app:layout_constraintVertical_bias="0.75" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
