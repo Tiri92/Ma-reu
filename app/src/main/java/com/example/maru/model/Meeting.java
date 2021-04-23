@@ -5,6 +5,8 @@ import java.util.List;
 public class Meeting {
 
 
+    private String dateOfMeeting;
+
     private String timeOfMeeting;
 
     private String placeOfMeeting;
@@ -16,27 +18,33 @@ public class Meeting {
     /**
      * Constructor
      *
+     * @param dateOfMeeting
      * @param timeOfMeeting
      * @param placeOfMeeting
      * @param subjectOfMeeting
      * @param listOfParticipants
      */
 
-    public Meeting(String timeOfMeeting, String placeOfMeeting, String subjectOfMeeting, List<String> listOfParticipants) {
+    public Meeting(String dateOfMeeting, String timeOfMeeting, String placeOfMeeting, String subjectOfMeeting, List<String> listOfParticipants) {
 
+        this.dateOfMeeting = dateOfMeeting;
         this.timeOfMeeting = timeOfMeeting;
         this.placeOfMeeting = placeOfMeeting;
         this.subjectOfMeeting = subjectOfMeeting;
         this.listOfParticipants = listOfParticipants;
     }
 
-    public String getTimeOfMeeting() {
-        return timeOfMeeting;
+    public String getDateOfMeeting() {
+        return dateOfMeeting;
     }
 
-    public void setTimeOfMeeting(String timeOfMeeting) {
-        this.timeOfMeeting = timeOfMeeting;
+    public void setDateOfMeeting(String dateOfMeeting) {
+        this.dateOfMeeting = dateOfMeeting;
     }
+
+    public String getTimeOfMeeting() { return timeOfMeeting; }
+
+    public void setTimeOfMeeting(String timeOfMeeting) {this.timeOfMeeting = timeOfMeeting; }
 
     public String getPlaceOfMeeting() {
         return placeOfMeeting;

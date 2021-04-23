@@ -6,47 +6,43 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <com.google.android.material.textfield.TextInputLayout
+    <TextView
         android:id="@+id/DateOfMeeting"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="60dp"
         android:hint="@string/date_of_meeting"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:helperText="Press twice"
-        app:layout_constraintBottom_toTopOf="@+id/TimeOfMeeting"
+        android:drawableTop="@drawable/ic_baseline_date_range_24"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:textColor="@color/BLEUCIEL"
+        android:textStyle="bold"
+        android:padding="16dp"
+        android:singleLine="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/TimeOfMeeting"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.83">
+        tools:ignore="MissingConstraints" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/DateOfMeeting2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
+    <TextView
         android:id="@+id/TimeOfMeeting"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="44dp"
         android:hint="@string/time_of_meeting"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:helperText="Press twice"
-        app:layout_constraintBottom_toTopOf="@+id/PlaceOfMeeting"
-        app:layout_constraintTop_toBottomOf="@id/DateOfMeeting"
-        app:layout_constraintVertical_bias="0.83">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TimeOfMeeting2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true" />
-    </com.google.android.material.textfield.TextInputLayout>
-
+        android:drawableTop="@drawable/ic_baseline_access_time_filled_24"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:textColor="@color/BLEUCIEL"
+        android:textStyle="bold"
+        android:padding="16dp"
+        android:singleLine="true"
+        app:layout_constraintLeft_toRightOf="@id/DateOfMeeting"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/PlaceOfMeeting"
@@ -55,12 +51,20 @@
         android:layout_height="wrap_content"
         android:hint="@string/place_of_meeting"
         android:layout_marginStart="8dp"
+        app:helperTextEnabled="true"
+        app:helperText="Following format: Salle X"
+        app:helperTextTextColor="@color/VERTCLAIR"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
         android:layout_marginEnd="8dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
         app:layout_constraintBottom_toTopOf="@id/SubjectOfMeeting"
         app:layout_constraintTop_toBottomOf="@id/TimeOfMeeting">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/PlaceOfMeeting2"
+            android:maxLength="10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true" />
@@ -73,13 +77,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/subject_of_meeting"
+        app:helperTextEnabled="true"
+        app:helperText="Short description"
+        app:helperTextTextColor="@color/VERTCLAIR"
         android:layout_marginStart="8dp"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
         android:layout_marginEnd="8dp"
+        app:endIconMode="clear_text"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
         app:layout_constraintBottom_toTopOf="@id/ListOfParticipants"
         app:layout_constraintTop_toBottomOf="@id/PlaceOfMeeting">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/SubjectOfMeeting2"
+            android:maxLength="20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true" />
@@ -96,6 +109,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:helperTextEnabled="true"
         app:helperText="Separate participants with ,"
+        app:helperTextTextColor="@color/VERTCLAIR"
         app:errorEnabled="true"
         app:errorTextColor="@color/red"
         android:layout_marginStart="8dp"
@@ -117,10 +131,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SAVE MEETING"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintVertical_bias="0.75"
+        app:cornerRadius="30dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

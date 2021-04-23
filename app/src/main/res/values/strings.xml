@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Ma réu</string>
     <string name="subject_of_meeting">Subject of meeting</string>
-    <string name="list_of_participants">List of participants</string>
+    <string name="list_of_participants">Emails of participants</string>
     <string name="place_of_meeting">Place of meeting</string>
-    <string name="time_of_meeting">Time of meeting</string>
-    <string name="date_of_meeting">Date of meeting</string>
+    <string name="time_of_meeting">Click and select time</string>
+    <string name="date_of_meeting">Click and select date</string>
 </resources>

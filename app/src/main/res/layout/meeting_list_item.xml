@@ -12,10 +12,10 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
+        android:src="@drawable/circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/circle"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/item_list_name"
@@ -32,7 +32,23 @@
         app:layout_constraintEnd_toStartOf="@id/item_list_delete_button"
         app:layout_constraintStart_toEndOf="@id/item_list_meeting"
         app:layout_constraintTop_toTopOf="@id/item_list_meeting"
+        app:layout_constraintVertical_bias="0.19999999"
         tools:text="15h30 - Réunion A" />
+
+    <TextView
+        android:id="@+id/subjectOfMeeting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:gravity="start"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/email_list"
+        app:layout_constraintEnd_toStartOf="@id/item_list_delete_button"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toEndOf="@id/item_list_meeting"
+        app:layout_constraintTop_toBottomOf="@id/item_list_name"
+        tools:text="Subject" />
+
 
     <TextView
         android:id="@+id/email_list"
@@ -42,11 +58,11 @@
         android:layout_marginEnd="24dp"
         android:ellipsize="end"
         android:singleLine="true"
-        app:layout_constraintBottom_toBottomOf="@id/item_list_meeting"
+        app:layout_constraintBottom_toBottomOf="@id/subjectOfMeeting"
         app:layout_constraintEnd_toStartOf="@+id/item_list_delete_button"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/item_list_meeting"
-        app:layout_constraintTop_toBottomOf="@+id/item_list_name"
+        app:layout_constraintTop_toBottomOf="@id/subjectOfMeeting"
         tools:text="thierryebitar@gmail.com" />
 
     <ImageButton

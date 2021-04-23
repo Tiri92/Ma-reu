@@ -51,6 +51,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.mEmailList.setText(getEmailParticipantList(meeting));
         holder.mItemListName.setText(getTitleOfMeeting(meeting));
+        holder.mSubjectOfMeeting.setText(meeting.getSubjectOfMeeting());
         holder.mItemOfListOfMeeting.setColorFilter(getRandomColor(holder.itemView.getResources()));
         holder.mItemDeleteButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -76,7 +77,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     private String getTitleOfMeeting(Meeting meeting) {
-        return meeting.getPlaceOfMeeting() + " - " + meeting.getTimeOfMeeting() + " - " + meeting.getSubjectOfMeeting();
+        return meeting.getPlaceOfMeeting() + " - " + meeting.getDateOfMeeting() + " - " + meeting.getTimeOfMeeting();
     }
 
     /**
@@ -107,6 +108,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public TextView mEmailList;
         @BindView(R.id.item_list_delete_button)
         public ImageButton mItemDeleteButton;
+        @BindView(R.id.subjectOfMeeting)
+        public TextView mSubjectOfMeeting;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
