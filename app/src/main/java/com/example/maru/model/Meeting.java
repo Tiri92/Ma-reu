@@ -1,50 +1,41 @@
 package com.example.maru.model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Meeting {
 
-
-    private String dateOfMeeting;
-
+    private LocalDate date;
     private String timeOfMeeting;
-
     private String placeOfMeeting;
-
     private String subjectOfMeeting;
-
     private List<String> listOfParticipants;
+    private int colorOfMeeting;
 
-    /**
-     * Constructor
-     *
-     * @param dateOfMeeting
-     * @param timeOfMeeting
-     * @param placeOfMeeting
-     * @param subjectOfMeeting
-     * @param listOfParticipants
-     */
-
-    public Meeting(String dateOfMeeting, String timeOfMeeting, String placeOfMeeting, String subjectOfMeeting, List<String> listOfParticipants) {
-
-        this.dateOfMeeting = dateOfMeeting;
+    public Meeting(LocalDate date, String timeOfMeeting, String placeOfMeeting, String subjectOfMeeting, List<String> listOfParticipants, int colorOfMeeting) {
+        this.date = date;
         this.timeOfMeeting = timeOfMeeting;
         this.placeOfMeeting = placeOfMeeting;
         this.subjectOfMeeting = subjectOfMeeting;
         this.listOfParticipants = listOfParticipants;
+        this.colorOfMeeting = colorOfMeeting;
     }
 
-    public String getDateOfMeeting() {
-        return dateOfMeeting;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setDateOfMeeting(String dateOfMeeting) {
-        this.dateOfMeeting = dateOfMeeting;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
-    public String getTimeOfMeeting() { return timeOfMeeting; }
+    public String getTimeOfMeeting() {
+        return timeOfMeeting;
+    }
 
-    public void setTimeOfMeeting(String timeOfMeeting) {this.timeOfMeeting = timeOfMeeting; }
+    public void setTimeOfMeeting(String timeOfMeeting) {
+        this.timeOfMeeting = timeOfMeeting;
+    }
 
     public String getPlaceOfMeeting() {
         return placeOfMeeting;
@@ -70,4 +61,11 @@ public class Meeting {
         this.listOfParticipants = listOfParticipants;
     }
 
+    public int getColorOfMeeting() {
+        return colorOfMeeting;
+    }
+
+    public void setColorOfMeeting(int colorOfMeeting) {
+        this.colorOfMeeting = colorOfMeeting;
+    }
 }
