@@ -9,7 +9,7 @@ import com.example.maru.service.MeetingService;
 
 public class DI {
 
-    public static MeetingService meetingService = new LocalMeetingService();
+    private static final MeetingService meetingService = new LocalMeetingService();
 
     /**
      * Get an instance on @{@link MeetingService}

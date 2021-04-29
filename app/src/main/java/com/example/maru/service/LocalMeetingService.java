@@ -6,7 +6,7 @@ import java.util.List;
 
 public class LocalMeetingService implements MeetingService {
 
-    private List<Meeting> meetingList = FakeMeetingGenerator.generateMeetingList();
+    private final List<Meeting> meetingList = FakeMeetingGenerator.generateMeetingList();
 
     @Override
     public List<Meeting> getMeetingList() {
