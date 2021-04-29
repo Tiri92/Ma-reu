@@ -5,4 +5,8 @@
     <string name="place_of_meeting">Place of meeting</string>
     <string name="time_of_meeting">Click and select time</string>
     <string name="date_of_meeting">Click and select date</string>
+    <string name="filter_per_place">Filter per place</string>
+    <string name="filter_per_date">Filter per date</string>
+    <string name="filter_meeting">Filter meeting</string>
+    <string name="no_filter">No filter</string>
 </resources>
