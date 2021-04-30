@@ -55,7 +55,7 @@ public class AddMeetingActivity extends AppCompatActivity {
     boolean isParticipantsFieldValid = false;
 
     private static final Pattern upperCaseLetter =
-            Pattern.compile("Salle [A-Z]*");
+            Pattern.compile("^Salle [A-J]{1}$");
 
 
     @Override
@@ -154,7 +154,7 @@ public class AddMeetingActivity extends AppCompatActivity {
                 isPlaceFieldValid = false;
             }
             else if(!upperCaseLetter.matcher(place).matches()){
-                mPlaceEditText.setError("Use one upper case letter");
+                mPlaceEditText.setError("Use one upper case letter between A & J");
                 isPlaceFieldValid = false;
             }
             else{
