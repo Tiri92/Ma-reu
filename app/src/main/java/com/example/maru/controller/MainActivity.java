@@ -1,5 +1,6 @@
 package com.example.maru.controller;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -59,15 +61,28 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         mAddMeetingButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), AddMeetingActivity.class);
                 ActivityCompat.startActivity(v.getContext(), intent, null);
-
             }
         });
+    }
 
+    private AlertDialog createPlaceListPickerDialog() {
+        String[] listOfPlace = {"Salle A", "Salle B", "Salle C", "Salle D", "Salle E", "Salle F", "Salle G", "Salle H", "Salle I", "Salle J"};
+        DialogInterface.OnClickListener clickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichPlace) {
+                String selectedPlace = listOfPlace[whichPlace];
+                mRecyclerView.setAdapter(new MeetingAdapter(getMeetingFilterByPlace(selectedPlace)));
+            }
+        };
+        AlertDialog alertDialog = new AlertDialog.Builder(mRecyclerView.getContext())
+                .setTitle("Choose a room")
+                .setItems(listOfPlace, clickListener)
+                .create();
+        return alertDialog;
     }
 
     @Override
@@ -99,8 +114,10 @@ public class MainActivity extends AppCompatActivity {
                 mDatePicker.show(getSupportFragmentManager().beginTransaction(), "DATE_PICKER");
                 return true;
             case R.id.menu_place_filter:
+                createPlaceListPickerDialog().show();
                 return true;
             case R.id.no_filter:
+                mRecyclerView.setAdapter(mAdapter);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -119,5 +136,16 @@ public class MainActivity extends AppCompatActivity {
         return filteredMeetingList;
     }
 
+    public List<Meeting> getMeetingFilterByPlace(String selectedPlace) {
+        List<Meeting> filteredMeetingListByPlace = new ArrayList<>(mMeetingList);
+
+        for (Iterator<Meeting> it = filteredMeetingListByPlace.iterator(); it.hasNext(); ) {
+            Meeting meeting = it.next();
+            if (!meeting.getPlaceOfMeeting().equalsIgnoreCase(selectedPlace)) {
+                it.remove();
+            }
+        }
+        return filteredMeetingListByPlace;
+    }
 
 }

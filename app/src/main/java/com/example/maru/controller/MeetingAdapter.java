@@ -54,6 +54,7 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.ViewHold
             public void onClick(View v) {
                 Toast.makeText(holder.itemView.getContext(), "Réunion supprimé", Toast.LENGTH_SHORT).show();
                 DI.getMeetingService().deleteMeeting(meeting);
+                listOfMeeting.remove(meeting);
                 notifyDataSetChanged();
             }
         });
