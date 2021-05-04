@@ -16,15 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.maru.R;
 import com.example.maru.di.DI;
-import com.example.maru.model.Meeting;
 import com.example.maru.util.Utils;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,11 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     MeetingAdapter mAdapter;
 
-    private List<Meeting> mMeetingList;
-
     private MaterialDatePicker mDatePicker;
-
-    private LocalDate mFilterDate;
 
     @Override
     protected void onResume() {
@@ -55,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mMeetingList = DI.getMeetingService().getMeetingList();
-        mAdapter = new MeetingAdapter(mMeetingList);
+        mAdapter = new MeetingAdapter(DI.getMeetingService().getMeetingList());
         mRecyclerView = findViewById(R.id.RecyclerView);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -75,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int whichPlace) {
                 String selectedPlace = listOfPlace[whichPlace];
-                mRecyclerView.setAdapter(new MeetingAdapter(getMeetingFilterByPlace(selectedPlace)));
+                mRecyclerView.setAdapter(new MeetingAdapter(DI.getMeetingService().getMeetingFilterByPlace(selectedPlace)));
             }
         };
         AlertDialog alertDialog = new AlertDialog.Builder(mRecyclerView.getContext())
@@ -100,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
         mDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Object selection) {
-                mFilterDate = Utils.epochMilliToLocalDate((Long) selection);
-                mRecyclerView.setAdapter(new MeetingAdapter(getMeetingFilterByDate()));
+                LocalDate filterDate = Utils.epochMilliToLocalDate((Long) selection);
+                mRecyclerView.setAdapter(new MeetingAdapter(DI.getMeetingService().getMeetingFilterByDate(filterDate)));
             }
         });
     }
@@ -124,28 +115,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public List<Meeting> getMeetingFilterByDate() {
-        List<Meeting> filteredMeetingList = new ArrayList<>(mMeetingList);
-
-        for (Iterator<Meeting> it = filteredMeetingList.iterator(); it.hasNext(); ) {
-            Meeting meeting = it.next();
-            if (!meeting.getDate().isEqual(mFilterDate)) {
-                it.remove();
-            }
-        }
-        return filteredMeetingList;
-    }
-
-    public List<Meeting> getMeetingFilterByPlace(String selectedPlace) {
-        List<Meeting> filteredMeetingListByPlace = new ArrayList<>(mMeetingList);
-
-        for (Iterator<Meeting> it = filteredMeetingListByPlace.iterator(); it.hasNext(); ) {
-            Meeting meeting = it.next();
-            if (!meeting.getPlaceOfMeeting().equalsIgnoreCase(selectedPlace)) {
-                it.remove();
-            }
-        }
-        return filteredMeetingListByPlace;
-    }
 
 }
