@@ -22,7 +22,7 @@ import static org.junit.Assert.assertFalse;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class ExampleUnitTest {
+public class MeetingListUnitTest {
 
     private MeetingService service;
 
