@@ -10,17 +10,12 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.maru.controller.MainActivity;
-import com.example.maru.di.DI;
-import com.example.maru.model.Meeting;
 
 import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.time.LocalDate;
-import java.util.List;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -39,8 +34,6 @@ import static com.example.maru.util.RecyclerViewItemCountAssertion.withItemCount
 @RunWith(AndroidJUnit4.class)
 public class MeetingListInstrumentedTest {
     private static int ITEMS_COUNT = 6;
-    private List<Meeting> mMeetings;
-    private List<Meeting> mMeetingsFilteredByDate;
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityRule =
@@ -48,8 +41,6 @@ public class MeetingListInstrumentedTest {
 
     @Before
     public void setUp() {
-        mMeetings = DI.getMeetingService().getMeetingList();
-        mMeetingsFilteredByDate = DI.getMeetingService().getMeetingFilterByDate(LocalDate.now());
     }
 
     @Test
