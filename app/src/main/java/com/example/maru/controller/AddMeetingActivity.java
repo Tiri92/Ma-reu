@@ -38,11 +38,11 @@ public class AddMeetingActivity extends AppCompatActivity {
     public TextView mDateTextView;
     @BindView(R.id.TimeOfMeeting)
     public TextView mTimeTextView;
-    @BindView(R.id.PlaceOfMeeting2)
+    @BindView(R.id.PlaceOfMeetingEditText)
     public TextInputEditText mPlaceEditText;
-    @BindView(R.id.SubjectOfMeeting2)
+    @BindView(R.id.SubjectOfMeetingEditText)
     public TextInputEditText mSubjectEditText;
-    @BindView(R.id.ListOfParticipants2)
+    @BindView(R.id.ListOfParticipantsEditText)
     public TextInputEditText mParticipantListEditText;
 
     private MaterialDatePicker mDatePicker;
@@ -201,6 +201,7 @@ public class AddMeetingActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
+
         }
     };
 
@@ -248,8 +249,8 @@ public class AddMeetingActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
         if(mDatePicker!=null && mDatePicker.isAdded()) {
             mDatePicker.dismiss();
         }

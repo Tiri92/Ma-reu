@@ -65,7 +65,7 @@
         tools:layout_editor_absoluteX="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/PlaceOfMeeting2"
+            android:id="@+id/PlaceOfMeetingEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="10"
@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@id/PlaceOfMeeting">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/SubjectOfMeeting2"
+            android:id="@+id/SubjectOfMeetingEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="20"
@@ -125,7 +125,7 @@
         app:layout_constraintVertical_bias="0.55">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ListOfParticipants2"
+            android:id="@+id/ListOfParticipantsEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true" />
